@@ -4,11 +4,12 @@ from selenium import webdriver
 from pages.auth_page import AuthPage
 from settings import valid_email, valid_password, invalid_email, invalid_password, correct_phone, incorrect_phone
 
+
 @pytest.mark.parametrize("email", [valid_email, invalid_email], ids=["валидный адрес", "невалидный адрес"])
 @pytest.mark.parametrize("password", [valid_password, invalid_password], ids=["валидный пароль", "невалидный пароль"])
 def test_rostelekom_page_email(email, password):
     """Проверка для входа по адресу электронной почты."""
-    web_browser = webdriver.Chrome('/Users/yan/Desktop/test/chromedriver')
+    web_browser = webdriver.Chrome()
     page = AuthPage(web_browser)
     page.username.send_keys(email)
     page.password.send_keys(password)
@@ -25,7 +26,7 @@ def test_rostelekom_page_email(email, password):
 @pytest.mark.parametrize("password", [valid_password, invalid_password], ids=["валидный пароль", "невалидный пароль"])
 def test_rostelekom_page_phone(phone, password):
     """Проверка входа по номеру телефона."""
-    web_browser = webdriver.Chrome('/Users/yan/Desktop/test/chromedriver')
+    web_browser = webdriver.Chrome()
     page = AuthPage(web_browser)
 
     page.username.send_keys(phone)
@@ -46,7 +47,7 @@ def test_rostelekom_page_phone(phone, password):
 def test_rostelekom_page_login(login, password):
     """Проверка входа по логину.  Вместо "<correct>" подставить валидное значение,
     вместо "wrong" - любое незарегистрированное"""
-    web_browser = webdriver.Chrome('/Users/yan/Desktop/test/chromedriver')
+    web_browser = webdriver.Chrome()
     page = AuthPage(web_browser)
 
     page.username.send_keys(login)
@@ -67,7 +68,7 @@ def test_rostelekom_page_login(login, password):
 def test_rostelekom_page_account(account, password):
     """Проверка входа по номеру лицевого счёта.  Вместо "<correct>" подставить валидное значение,
     вместо "wrong" - любое незарегистрированное"""
-    web_browser = webdriver.Chrome('/Users/yan/Desktop/test/chromedriver')
+    web_browser = webdriver.Chrome()
     page = AuthPage(web_browser)
 
     page.username.send_keys(account)
