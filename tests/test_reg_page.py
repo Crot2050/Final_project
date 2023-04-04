@@ -8,8 +8,8 @@ def generate_string(num):
 
 
 @pytest.mark.parametrize("first_name", ['аа-аа', generate_string(2), generate_string(3), generate_string(15),
-                                        generate_string(25)],
-                         ids=['с дефисом', '2 символа', '3 символа', '15 символов', '25 символов'])
+                                        generate_string(29), generate_string(30)],
+                         ids=['с дефисом', '2 символа', '3 символа', '15 символов', '29 символов', '30 символов'])
 def test_first_name_field_positive(first_name):
     """Позитивные проверки для поля ввода имени """
     web_browser = webdriver.Chrome()
@@ -39,9 +39,9 @@ def test_first_name_field_negative(first_name):
     page.close()
 
 
-@pytest.mark.parametrize("last_name", [generate_string(2), generate_string(3), generate_string(19),
-                                       generate_string(22), "аа-аа"],
-                         ids=['2 символа', '3 символа', '19 символов', '22 символа', 'с дефисом'])
+@pytest.mark.parametrize("last_name", [generate_string(2), generate_string(3), generate_string(15),
+                                       generate_string(29), generate_string(30), "аа-аа"],
+                         ids=['2 символа', '3 символа', '15 символов', '29 символов', '30 символов','с дефисом'])
 def test_last_name_field_positive(last_name):
     """Позитивные проверки для поля ввода фамилии"""
     web_browser = webdriver.Chrome()
